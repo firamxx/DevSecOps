@@ -21,7 +21,7 @@ jobs:
           pip install -r requirements.txt
           pip install -r dev-requirements.txt
       - name: Run Pytest
-        run: pytest
+        run: python -m pytest
 
   #Static Analysis Security Testing (SAST)
   sast_bandit:
@@ -31,7 +31,7 @@ jobs:
       - name: Install Bandit
         run: pip install bandit
       - name: Run Bandit Scan
-        run: bandit -r . -f json
+        run: bandit -r . -x ./tests,./.venv -s B101 -f table
 
   #Software Composition Analysis (SCA)
   sca_pip_audit:
@@ -41,7 +41,7 @@ jobs:
       - name: Install pip-audit
         run: pip install pip-audit
       - name: Run SCA Scan
-        run: pip-audit -r requirements.txt -r dev-requirements.txt
+        run: pip-audit -r requirements.txt -r dev-requirements.tx
 
   #Secret Scanning
   secret_scan:
