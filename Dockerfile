@@ -1,10 +1,7 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
 
-RUN addgroup --system app && adduser --system --ingroup app app \
-    && apt-get update \
-    && apt-get upgrade -y \
-    && apt-get install -y --no-install-recommends ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+RUN addgroup -S app && adduser -S app -G app \
+    && apk add --no-cache ca-certificates
 
 WORKDIR /app
 
