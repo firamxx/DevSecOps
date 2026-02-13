@@ -18,8 +18,8 @@ jobs:
           python-version: '3.9'
       - name: Install dependencies
         run: |
-          pip install -r requirement.txt
-          pip install -r dev-requirement.txt
+          pip install -r requirements.txt
+          pip install -r dev-requirements.txt
       - name: Run Pytest
         run: pytest
 
@@ -41,7 +41,7 @@ jobs:
       - name: Install pip-audit
         run: pip install pip-audit
       - name: Run SCA Scan
-        run: pip-audit -r requirement.txt -r dev-requirement.tx
+        run: pip-audit -r requirements.txt -r dev-requirements.txt
 
   #Secret Scanning
   secret_scan:
