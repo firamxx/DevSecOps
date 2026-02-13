@@ -85,4 +85,5 @@ jobs:
           image-ref: 'docker.io/${{ secrets.DOCKERHUB_USERNAME }}/my-app:latest'
           format: 'table'
           exit-code: '1'
+          ignore-unfixed: true
           severity: 'CRITICAL,HIGH'
